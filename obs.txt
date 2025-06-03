@@ -1,0 +1,53 @@
+
+Páginas editadas:
+
+php = 10
+html = 2
+css = 2
+js =
+pasta de arquivos = 1
+----------------------------------------------------------------------------------------------
+(FUNCIONADO)  falta editar as tabelas
+home.css
+style.css
+
+cadastrarLogin.php = FINALIZADO
+
+Login.php = FINALIZADO
+
+novoconexao.php = FINALIZADO;
+
+
+
+
+
+logout.php = premição
+
+restrita.php = codigo para bloquiar o acesso a algumas pagina dos sistema
+
+autenficar.php = codigo do login 
+
+Administração.php = ( colocar para atualizar as informçãos /Melhora a pagina e editar com css)
+
+-------------------------------------------------------------------------------------------------
+(NÃO FUNCIONA OU NÃO FINALIZADA)
+
+repositorio.html = pagina de cadastro do cliente- para colocar o artigo junto com dados pessoais (editar final do cadastro)
+
+sobreArtigo.php = o cliente vai ter acesso a o nome do autor,data publicada,titulo,tema central,palavras chaves etc...
+
+enviarArquivos.php = a logica backend (cunsulta da tabelas, codigo de enviar arquivos, deletar das tabelas) e o html das três tabelas 
+
+Fazer a pagina incial o clinte que vai publicar o artigo (deve ter os artigos que essa pessoa publicou e o butão para ele colocar mais artigos/ o cliente deve poder ediatr seu pefil e apagar seus artigos)
+
+Home.html = página incial do cliente. (Criar a pagina com css com todos os links para o cliente)
+
+o propior artigo e outras ferramentas/ essa pagina também deve levar o administrador para a pagina de menu de Administração.
+
+repositprio.php = não tem nada
+
+menu2.php = codigo de charles precisa editar e desconbrir uma função para essa porra
+
+-----------------------------------------------------------------------------------------
+
+
