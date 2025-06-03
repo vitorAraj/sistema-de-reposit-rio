@@ -1,0 +1,105 @@
+<?php
+
+session_start();
+if (!isset($_SESSION['id_login'])) {
+    header("Location: login.html");
+    exit();
+} 
+?>
+
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="/sistema/css/style.css">
+    <title>Document</title>
+
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+</head>
+<body>
+<ul>
+    <li class="a"><a  href="menu2.php">Início</a></li>
+    <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Cadastro</a>
+        <div class="dropdown-content">
+          <a href="form_cad.php">Aluno</a>
+          <a href="form_usuario.html">Usuario</a>
+        </div>
+    <li class="a"><a  href="form_alterar.html">Altarações</a></li>
+    <li class="a"><a  href="form_exclusao.html">Excluir</a></li>
+   
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Consultas</a>
+    <div class="dropdown-content">
+      <a href="consulta.php">Consulta usuario</a>
+      <a href="consult_resp.php">Consulta Resp</a>
+      <a href="#">Consulta Usuario</a>
+    </div>
+    <li class="a"><a  href="sobre.html">Sobre</a></li>
+    <li class="a"><a  href="logout.php">Logout</a></li>
+  </li>
+</ul>
+
+<h2>Bem-vindo, <?php echo $_SESSION['nome_login']; ?>!</h2>
+<p> Seu id é :  <?php echo $_SESSION['id_login']; ?></p>
+
+</body>
+</html>
+
+
+
