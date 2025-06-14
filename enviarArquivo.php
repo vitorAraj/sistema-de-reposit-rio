@@ -16,7 +16,6 @@ if(isset($_GET['deletar'])) {
            }      
         }
 
-
         if (isset($_GET['deletar_repositorio'])) {
     $id = intval($_GET['deletar_repositorio']);
 
@@ -32,9 +31,6 @@ if(isset($_GET['deletar'])) {
     }
 }
 
-
-
-
   if (isset($_GET['deletar_usuario'])) {
     $id = intval($_GET['deletar_usuario']);
     
@@ -47,9 +43,7 @@ if(isset($_GET['deletar'])) {
     if ($deletar_sql) {
         echo "<p>Registro do repositório excluído com sucesso!</p>";
     }
-}
-
-        
+} 
         if(isset($_FILES['arquivo'])) {
         $arquivo = $_FILES['arquivo'];
        
@@ -62,7 +56,7 @@ if(isset($_GET['deletar'])) {
             $novoNomeDoArquivo = uniqid();
             $extansao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
 
-            if($extansao != "docx" && $extansao != 'png' && $extansao != 'jpg' && $extansao != 'pdf')
+            if( $extansao != 'pdf')
             die("Tipo de arquivo não aceito");
 
             $path = $pasta . $novoNomeDoArquivo. "." . $extansao;
@@ -71,19 +65,17 @@ if(isset($_GET['deletar'])) {
 
            if ($deu_certo) {
                 $conn->query("INSERT INTO arquivos (nome, path) VALUES('$nomeDoArquivo', '$path')") or die($conn->error);
-                echo "<p>Arquivo enviado com sucesso! para acessá-lo, <a target=\"_blank\" href=\"arquivos/$novoNomeDoArquivo.$extansao\"> clique aqui.</a>  </p>";
+                $envio = "<p> <a target=\"_blank\" href=\"arquivos/$novoNomeDoArquivo.$extansao\"> clique aqui para acessá-lo.</a>  </p>";
                 
            }
                 else
-                echo "<p> Falha ao enviar arquivo </p>";
+                $envio = "<p> Falha ao enviar arquivo </p>";
     }
 
 
     $sql_query = $conn->query("SELECT * FROM arquivos") or die($conn->error);
     ?>
-
 <!------------------------------------------------------------------------------------------------------------------->
-
 <?php
 
 
@@ -105,9 +97,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      VALUES ( '$autoria', '$nome_orientador', '$tituloArtigo', '$palavras_chave','$data', '$temaCentral', '$tipoDeProducao', '$path' ,'$resumo')";
 
     if (mysqli_query($conn, $sql)) {
-        echo "Artigo cadastrado com sucesso!";
+        $envio= "Artigo cadastrado com sucesso! para acessá-lo <a target=\"_blank\" href=\"arquivos/$novoNomeDoArquivo.$extansao\"> clique aqui.</a>  ";
     } else {
-        echo "Erro ao cadastrar o usuário: " . mysqli_error($conn);
+        $envio= "Erro ao cadastrar o usuário: " . mysqli_error($conn);
     }
 
     // Fechar a conexão com o banco de dados
@@ -116,7 +108,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <?php
-include('restrita.php');
-
-
+//include('restrita.php');
 ?>
+<!------------------------------------------------------------------------------------------------------------------->
+<!----SISTEMA DE BUSCA--->
+
+ <?php
+        if (!isset($_GET['busca'])) {
+            ?>
+        <tr>
+     
+        </tr>
+        <?php
+        } else {
+            $pesquisa = $conn->real_escape_string($_GET['busca']);
+            $sql_code = "SELECT * FROM  repositorio WHERE titulo_artigo LIKE '%$pesquisa%' OR Autoria LIKE '%$pesquisa%' OR tema_central LIKE '%$pesquisa%' OR palavras_chaves LIKE '%$pesquisa%'";
+            $sql_query = $conn->query($sql_code) or die("ERRO ao consultar! " . $conn->error); 
+            
+            if ($sql_query->num_rows == 0) {
+                ?>
+            <tr>
+                <td colspan="3">Nenhum resultado encontrado...</td>
+            </tr>
+            <?php
+            } else {
+                while($dados = $sql_query->fetch_assoc()) {
+                    ?>
+                  
+                    <?php
+                }
+            }
+            ?>
+        <?php
+        } ?>
+
+  
