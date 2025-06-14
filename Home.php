@@ -1,5 +1,6 @@
 <?php
 include('enviarArquivo.php');
+include('includes\nav.php');
 ?>
 
 <!DOCTYPE html>
@@ -14,44 +15,8 @@ include('enviarArquivo.php');
 
 <title>Home</title>
 
-</head>
-<body class="d-flex flex-column h-100">
-    
-<header id="topo" class="border-bottom sticky-top">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="index.php">
-      <img src="img/logo-removebg-preview.png" alt="Logo" class="logo-img me-2">
-      Artigos
-    </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="Home.php"><i class="bi bi-house-door-fill"></i> Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="admin/index.php"><i class="bi bi-lock-fill"></i> Área administrativa</a>
-        </li>
-      </ul>
-
-      <form autocomplete="off" class="d-flex ms-3 me-2" action="resultados.php" method="POST">
-        <input name="busca" class="form-control me-2" type="search" placeholder="Pesquise aqui"
-          aria-label="Pesquise aqui">
-        <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button>
-      </form>
-
-      <a class="btn btn-outline-secondary" href="/sistema/login.php"><i class="bi bi-box-arrow-in-left"></i> Login</a>
-    </div>
-  </div>
-</nav>
-
-</header>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
@@ -96,6 +61,10 @@ include('enviarArquivo.php');
   width: auto;
 }
 
+.feature-icon{
+  background-color:rgba(109, 131, 153, 0.14);
+}
+
 
     a {
       color:#000000;
@@ -127,7 +96,7 @@ include('enviarArquivo.php');
       display: block;
       width: 30px;
       height: 2px;
-      background-color: #0d6efd; /* azul Bootstrap */
+      background-color: #0d6efd; 
       margin-top: 4px;
     }
 
@@ -178,7 +147,6 @@ include('enviarArquivo.php');
     <hr class="text-secondary" />
   </div>
 
-  <!-- Jumbotron -->
   <div class="container">
     <div class="jumbotron-custom mb-5">
       <h1 class="display-5 fw-bold">Repositório de Artigos</h1>
@@ -191,7 +159,7 @@ include('enviarArquivo.php');
     </div>
   </div>
 
-  <!-- Two Columns -->
+ 
   <div class="container mb-5">
     <div class="row g-4">
       <div class="col-md-6">
@@ -214,7 +182,6 @@ include('enviarArquivo.php');
       </div>
     </div>
   </div>
-
 
   <div class="container py-5">
     <h2 class="pb-2 border-bottom">Benefícios do Repositório</h2>
@@ -258,7 +225,7 @@ include('enviarArquivo.php');
   <ul class="list-group list-group-flush">
       <?php while($arquivo = $sql_query->fetch_assoc()){
         ?> 
-        
+
       <li class="list-group-item"> <i class="bi bi-file-earmark-text me-2"></i>  <a href="sobreArtigo.php"><?php echo $arquivo['nome'];?> </a> </li>
     </li>
 <?php  }?>
@@ -278,7 +245,7 @@ include('enviarArquivo.php');
         <div class="col-md-4 mb-4">
           <h5 class="footer-title">Contato</h5>
           <span class="footer-contact">75-2332-2323</span>
-          <span class="footer-contact">sadasdsa@gmail.com</span>
+          <span class="footer-contact">Cerboninal@gmail.com</span>
         </div>
         <div class="col-md-4">
           <h5 class="footer-title">Rede Social</h5>

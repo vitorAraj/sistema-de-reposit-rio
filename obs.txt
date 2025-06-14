@@ -1,53 +1,38 @@
-
-Páginas editadas:
-
-php = 10
-html = 2
-css = 2
-js =
-pasta de arquivos = 1
 ----------------------------------------------------------------------------------------------
 (FUNCIONADO)  falta editar as tabelas
-home.css
-style.css
 
 cadastrarLogin.php = FINALIZADO
 
 Login.php = FINALIZADO
 
-novoconexao.php = FINALIZADO;
+restrita.php = FINALIZADA
 
+repositorio.php = QUASE FINALIZADA
 
-
-
-
-logout.php = premição
+Home.php = QUASE FINALIZADA
 
 restrita.php = codigo para bloquiar o acesso a algumas pagina dos sistema
 
-autenficar.php = codigo do login 
+enviarArquivos.php = organizar os codigos
 
-Administração.php = ( colocar para atualizar as informçãos /Melhora a pagina e editar com css)
+sistemaBusca.php = FUNCIONADO, porém falta editar com boostrap
 
 -------------------------------------------------------------------------------------------------
 (NÃO FUNCIONA OU NÃO FINALIZADA)
 
-repositorio.html = pagina de cadastro do cliente- para colocar o artigo junto com dados pessoais (editar final do cadastro)
+EditarPerfil.php = começar a Fazer
 
-sobreArtigo.php = o cliente vai ter acesso a o nome do autor,data publicada,titulo,tema central,palavras chaves etc...
+ConsutarArtigo.php = começar a Fazer
 
-enviarArquivos.php = a logica backend (cunsulta da tabelas, codigo de enviar arquivos, deletar das tabelas) e o html das três tabelas 
+sobreArtigo.php = começar a Fazer
 
-Fazer a pagina incial o clinte que vai publicar o artigo (deve ter os artigos que essa pessoa publicou e o butão para ele colocar mais artigos/ o cliente deve poder ediatr seu pefil e apagar seus artigos)
+adimnUsuario.php = falta bastanete coisas
 
-Home.html = página incial do cliente. (Criar a pagina com css com todos os links para o cliente)
 
-o propior artigo e outras ferramentas/ essa pagina também deve levar o administrador para a pagina de menu de Administração.
 
-repositprio.php = não tem nada
+manu2.php = não é FUNCIONAL
 
-menu2.php = codigo de charles precisa editar e desconbrir uma função para essa porra
-
+Administração.php = (fazer o links de Administração/cunsulta,atualizar e deletar e etc ...)
 -----------------------------------------------------------------------------------------
 
 

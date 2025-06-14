@@ -24,7 +24,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
                 $_SESSION['id_login'] = $cadastro['id_login'];
                 $_SESSION['nome_login'] = $cadastro['nome_login'];
 
-                header("Location: administração.php");
+                header("Location: adminUsuario.php");
                 exit;
             } else {
                  $mensagem = "Senha incorreta!";

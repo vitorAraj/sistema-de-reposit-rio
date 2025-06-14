@@ -70,6 +70,10 @@ include 'autenticar.php';
     a:hover {
       color: #fff;
     }
+
+    .bi-exclamation-circle-fill{
+      color:rgb(248, 74, 83);
+    }
   </style>
 </head>
 <body>
@@ -81,7 +85,7 @@ include 'autenticar.php';
       <h1 class="h2 mb-3 fw-normal">Entrar</h1>
 
    <?php if (!empty($mensagem)) : ?>
-  <div class="alert alert-danger text-center">
+  <div class="alert alert-danger text-center"> <i class="bi bi-exclamation-circle-fill"></i>
     <?php echo $mensagem; ?>
   </div> 
 <?php endif; ?>

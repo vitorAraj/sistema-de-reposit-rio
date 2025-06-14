@@ -1,6 +1,12 @@
 <?php
 include('enviarArquivo.php');
 ?>
+<style>
+    .bi-trash3-fill{
+        color: black;
+    }
+</style>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -8,6 +14,7 @@ include('enviarArquivo.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <link rel="stylesheet" href="/sistema/css/style.css">
     <title>Cadastro de Usuário</title>
@@ -15,8 +22,6 @@ include('enviarArquivo.php');
 </head>
 <body>
 
- <h2>Bem vindo à pagina de consulta, <?php echo $_SESSION['nome_login']; ?> </h2>
- <h3>Seu id é <?php echo $_SESSION['id_login']; ?></h3>
 
 <p>
     <a href="logout.php">Sair</a>
@@ -41,7 +46,7 @@ include('enviarArquivo.php');
         <td><img height="50" src="<?php echo $arquivo['path'];?>" alt=""></td>
         <td> <a target="_blank" href="<?php echo $arquivo['path']; ?>"><?php echo $arquivo['nome'];?></a> </td>
         <td> <?php echo date("d/m/y H:i", strtotime($arquivo['data_upload'])); ?> </td>
-        <td><a href="enviarArquivo.php?deletar=<?php echo $arquivo['id'];?>">Deletar</a> </td>
+        <td><a href="enviarArquivo.php?deletar=<?php echo $arquivo['id'];?>"> <i class="bi bi-trash3-fill"> </i>Deletar</a> </td>
        </tr>
        <?php
         }
@@ -83,11 +88,8 @@ include('enviarArquivo.php');
          } 
          ?>    
     </table>    
-
     <!---------------------------------------------------------------------------------------->
      <!----Tabela do repositorio----->
-
-
      <h1>Lista do repositorio</h1>
 <?php
  $sql ="SELECT * FROM repositorio" ; 
@@ -132,5 +134,99 @@ include('enviarArquivo.php');
          } 
          ?>    
     </table>    
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Icon Grid</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .icon-grid a {
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, color 0.2s;
+    }
+    .icon-grid a:hover {
+        
+      color: #0d6efd;
+      transform: translateY(-3px);
+    }
+    .icon-grid i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container py-5">
+  <h2>ADMINSTRAÇÃO</h2>
+  <hr>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 icon-grid">
+    <div class="col text-center">
+      <a href="#">
+        <i class="bi bi-bootstrap-fill"></i>
+        <h5>Featured title</h5>
+        <p>Paragraph of text beneath the heading to explain the heading.</p>
+      </a>
+    </div>
+    <div class="col text-center">
+      <a href="#">
+        <i class="bi bi-cpu-fill"></i>
+        <h5>Featured title</h5>
+        <p>Paragraph of text beneath the heading to explain the heading.</p>
+      </a>
+    </div>
+    <div class="col text-center">
+      <a href="#">
+        <i class="bi bi-calendar3"></i>
+        <h5>Featured title</h5>
+        <p>Paragraph of text beneath the heading to explain the heading.</p>
+      </a>
+    </div>
+    <div class="col text-center">
+      <a href="#">
+        <i class="bi bi-house-door"></i>
+        <h5>Home</h5>
+        <p>Paragraph of text beneath the heading to explain the heading.</p>
+      </a>
+    </div>
+    <div class="col text-center">
+      <a href="#">
+        <i class="bi bi-speedometer2"></i>
+        <h5>Featured title</h5>
+        <p>Paragraph of text beneath the heading to explain the heading.</p>
+      </a>
+    </div>
+    <div class="col text-center">
+      <a href="#">
+        <i class="bi bi-people"></i>
+        <h5>Featured title</h5>
+        <p>Paragraph of text beneath the heading to explain the heading.</p>
+      </a>
+    </div>
+    <div class="col text-center">
+      <a href="#">
+        <i class="bi bi-pin"></i>
+        <h5>Featured title</h5>
+        <p>Paragraph of text beneath the heading to explain the heading.</p>
+      </a>
+    </div>
+    <div class="col text-center">
+      <a href="#">
+        <i class="bi bi-tools"></i>
+        <h5>Sair</h5>
+        <p>Paragraph of text beneath the heading to explain the heading.</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
