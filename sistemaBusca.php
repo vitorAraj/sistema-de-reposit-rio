@@ -38,7 +38,7 @@ include('enviarArquivo.php');
         <?php
         } else {
             $pesquisa = $conn->real_escape_string($_GET['busca']);
-            $sql_code = "SELECT * FROM  repositorio WHERE titulo_artigo LIKE '%$pesquisa%' OR Autoria LIKE '%$pesquisa%' OR tema_central LIKE '%$pesquisa%' OR data_Publicação LIKE '%$pesquisa%'";
+            $sql_code = "SELECT * FROM  repositorio WHERE titulo_artigo LIKE '%$pesquisa%' OR Autoria LIKE '%$pesquisa%' OR tema_central LIKE '%$pesquisa%' OR tema_central LIKE '%$pesquisa%'";
             $sql_query = $conn->query($sql_code) or die("ERRO ao consultar! " . $conn->error); 
             
             if ($sql_query->num_rows == 0) {

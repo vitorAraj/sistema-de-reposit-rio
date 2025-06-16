@@ -23,7 +23,7 @@
 <header id="topo" class="border-bottom sticky-top">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="Home.php">
+    <a class="navbar-brand d-flex align-items-center" href="index.php">
       <img src="img/logo-removebg-preview.png" alt="Logo" class="logo-img me-2">
       Artigos
     </a>

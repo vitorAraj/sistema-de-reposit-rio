@@ -165,27 +165,27 @@ include('enviarArquivo.php');
 <body>
 
 <div class="container py-5">
-  <h2>ADMINSTRAÇÃO</h2>
+  <h3>FERRAMENTAS DE ADMINSTRAÇÃO</h3>
   <hr>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 icon-grid">
     <div class="col text-center">
       <a href="#">
         <i class="bi bi-bootstrap-fill"></i>
-        <h5>Featured title</h5>
+        <h5>Editar Perfil</h5>
         <p>Paragraph of text beneath the heading to explain the heading.</p>
       </a>
     </div>
     <div class="col text-center">
       <a href="#">
         <i class="bi bi-cpu-fill"></i>
-        <h5>Featured title</h5>
+        <h5>Cadastrar Usuarios</h5>
         <p>Paragraph of text beneath the heading to explain the heading.</p>
       </a>
     </div>
     <div class="col text-center">
       <a href="#">
         <i class="bi bi-calendar3"></i>
-        <h5>Featured title</h5>
+        <h5>Cadastrar Artigos</h5>
         <p>Paragraph of text beneath the heading to explain the heading.</p>
       </a>
     </div>
@@ -199,7 +199,7 @@ include('enviarArquivo.php');
     <div class="col text-center">
       <a href="#">
         <i class="bi bi-speedometer2"></i>
-        <h5>Featured title</h5>
+        <h5>Gerenciar Banco de Dados</h5>
         <p>Paragraph of text beneath the heading to explain the heading.</p>
       </a>
     </div>
