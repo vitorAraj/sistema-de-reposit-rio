@@ -122,19 +122,19 @@ include('restrita.php');
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li>
-          <a href="Home.php" class="nav-link"><i class="bi bi-house-door-fill"></i>Home</a>
+          <a href="index.php" class="nav-link"><i class="bi bi-house-door-fill"></i>Home</a>
         </li>
         <li>
-          <a href="adminUsuario.php" class="nav-link"><i class="bi bi-pencil-square"></i> Editar Perfil</a>
+          <a href="adminUsuario.php" class="nav-link"><i class="bi bi-pencil-square"></i>Editar Perfil</a>
         </li>
         <li>
-          <a href="sistemaBusca.php" class="nav-link"><i class="bi bi-book"></i> Consultar Artigos</a>
+          <a href="sistemaBusca.php" class="nav-link"><i class="bi bi-book"></i>Consultar Artigos</a>
         </li>
         <li>
-          <a href="Repositorio.php" class="nav-link"><i class="bi bi-cloud-upload"></i> Cadastrar Artigos</a>
+          <a href="Repositorio.php" class="nav-link"><i class="bi bi-cloud-upload"></i>Cadastrar Artigos</a>
         </li>
         <li>
-          <a href="logout.php" class="nav-link"><i class="bi bi-x-circle"></i> Sair</a>
+          <a href="logout.php" class="nav-link"><i class="bi bi-x-circle"></i>Sair</a>
         </li>
       </ul>
     </div>
