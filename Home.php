@@ -1,6 +1,7 @@
 <?php
 include('enviarArquivo.php');
 include('includes\nav.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +12,7 @@ include('includes\nav.php');
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="/sistema/css/style.css">
+
 
 <title>Home</title>
 
@@ -56,14 +57,6 @@ include('includes\nav.php');
       color: #777;
     }
 
-   .logo-img {
-  height: 60px;
-  width: auto;
-}
-
-.feature-icon{
-  background-color:rgba(109, 131, 153, 0.14);
-}
 
 
     a {
@@ -223,14 +216,15 @@ include('includes\nav.php');
   <h4>Artigos Publicados</h4>
 
   <ul class="list-group list-group-flush">
-      <?php while($arquivo = $sql_query->fetch_assoc()){
-        ?> 
-
-      <li class="list-group-item"> <i class="bi bi-file-earmark-text me-2"></i>  <a href="sobreArtigo.php"><?php echo $arquivo['nome'];?> </a> </li>
-    </li>
-<?php  }?>
-
-  </ul>
+    <?php while($resultset = $cadastro->fetch_array()) { ?> 
+        <li class="list-group-item">
+            <i class="bi bi-file-earmark-text me-2"></i>  
+            <a href="sobreArtigo.php?id=<?php echo $resultset['Id_user']; ?>">
+                <?php echo $resultset['titulo_artigo']; ?>
+            </a> 
+        </li>
+    <?php } ?>
+</ul>
 </div>
   
 

@@ -1,6 +1,9 @@
 <?php
 include('enviarArquivo.php');
+include('restrita.php');
+//include('includes\navAdmin.php');  
 ?>
+
 <style>
     .bi-trash3-fill{
         color: black;
@@ -21,6 +24,72 @@ include('enviarArquivo.php');
     
 </head>
 <body>
+
+
+
+
+<div class="container py-5">
+  <h3>FERRAMENTAS DE ADMINSTRAÇÃO</h3>
+  <hr>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 icon-grid">
+    <div class="col text-center">
+      <a href="#">
+        <i class="bi bi-bootstrap-fill"></i>
+        <h5>Editar Perfil</h5>
+        <p>Paragraph of text beneath the heading to explain the heading.</p>
+      </a>
+    </div>
+    <div class="col text-center">
+      <a href="#">
+        <i class="bi bi-cpu-fill"></i>
+        <h5>Cadastrar Usuarios</h5>
+        <p>Paragraph of text beneath the heading to explain the heading.</p>
+      </a>
+    </div>
+    <div class="col text-center">
+      <a href="#">
+        <i class="bi bi-calendar3"></i>
+        <h5>Cadastrar Artigos</h5>
+        <p>Paragraph of text beneath the heading to explain the heading.</p>
+      </a>
+    </div>
+    <div class="col text-center">
+      <a href="#">
+        <i class="bi bi-house-door"></i>
+        <h5>Home</h5>
+        <p>Paragraph of text beneath the heading to explain the heading.</p>
+      </a>
+    </div>
+    <div class="col text-center">
+      <a href="#">
+        <i class="bi bi-speedometer2"></i>
+        <h5>Gerenciar Banco de Dados</h5>
+        <p>Paragraph of text beneath the heading to explain the heading.</p>
+      </a>
+    </div>
+    <div class="col text-center">
+      <a href="#">
+        <i class="bi bi-people"></i>
+        <h5>Featured title</h5>
+        <p>Paragraph of text beneath the heading to explain the heading.</p>
+      </a>
+    </div>
+    <div class="col text-center">
+      <a href="#">
+        <i class="bi bi-pin"></i>
+        <h5>Featured title</h5>
+        <p>Paragraph of text beneath the heading to explain the heading.</p>
+      </a>
+    </div>
+    <div class="col text-center">
+      <a href="#">
+        <i class="bi bi-tools"></i>
+        <h5>Sair</h5>
+        <p>Paragraph of text beneath the heading to explain the heading.</p>
+      </a>
+    </div>
+  </div>
+</div>
 
 
 <p>
@@ -66,6 +135,7 @@ include('enviarArquivo.php');
         <th>Nome</th>
         <th>Email</th>
         <th>Senha crip</th>
+        <th>Tipo</th>
         <th>Data de envio</th>
         <th></th>
     </thead>   
@@ -80,6 +150,7 @@ include('enviarArquivo.php');
         <td> <?php  echo $resultse['nome_login'];?>  </td>
         <td> <?php  echo $resultse['email'];?>  </td>
         <td> <?php  echo $resultse['senha'];?> </td> 
+        <td> <?php  echo $resultse['tipo'];?>  </td>
         <td> <?php  echo date("d/m/y", strtotime($resultse['data']));?> </td> 
         <td><a href="enviarArquivo.php?deletar_usuario=<?php echo $resultse['id_login'];?>">Deletar</a></td>  
       </tr>
@@ -92,7 +163,7 @@ include('enviarArquivo.php');
      <!----Tabela do repositorio----->
      <h1>Lista do repositorio</h1>
 <?php
- $sql ="SELECT * FROM repositorio" ; 
+ $sql ="SELECT * FROM repositorio"; 
   //$sql.= " where titulo like '%".$_POST['noticiapesquisa']."%' ";
   ?>   
       <table border="1" cellpadding="10">
@@ -164,68 +235,6 @@ include('enviarArquivo.php');
 </head>
 <body>
 
-<div class="container py-5">
-  <h3>FERRAMENTAS DE ADMINSTRAÇÃO</h3>
-  <hr>
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 icon-grid">
-    <div class="col text-center">
-      <a href="#">
-        <i class="bi bi-bootstrap-fill"></i>
-        <h5>Editar Perfil</h5>
-        <p>Paragraph of text beneath the heading to explain the heading.</p>
-      </a>
-    </div>
-    <div class="col text-center">
-      <a href="#">
-        <i class="bi bi-cpu-fill"></i>
-        <h5>Cadastrar Usuarios</h5>
-        <p>Paragraph of text beneath the heading to explain the heading.</p>
-      </a>
-    </div>
-    <div class="col text-center">
-      <a href="#">
-        <i class="bi bi-calendar3"></i>
-        <h5>Cadastrar Artigos</h5>
-        <p>Paragraph of text beneath the heading to explain the heading.</p>
-      </a>
-    </div>
-    <div class="col text-center">
-      <a href="#">
-        <i class="bi bi-house-door"></i>
-        <h5>Home</h5>
-        <p>Paragraph of text beneath the heading to explain the heading.</p>
-      </a>
-    </div>
-    <div class="col text-center">
-      <a href="#">
-        <i class="bi bi-speedometer2"></i>
-        <h5>Gerenciar Banco de Dados</h5>
-        <p>Paragraph of text beneath the heading to explain the heading.</p>
-      </a>
-    </div>
-    <div class="col text-center">
-      <a href="#">
-        <i class="bi bi-people"></i>
-        <h5>Featured title</h5>
-        <p>Paragraph of text beneath the heading to explain the heading.</p>
-      </a>
-    </div>
-    <div class="col text-center">
-      <a href="#">
-        <i class="bi bi-pin"></i>
-        <h5>Featured title</h5>
-        <p>Paragraph of text beneath the heading to explain the heading.</p>
-      </a>
-    </div>
-    <div class="col text-center">
-      <a href="#">
-        <i class="bi bi-tools"></i>
-        <h5>Sair</h5>
-        <p>Paragraph of text beneath the heading to explain the heading.</p>
-      </a>
-    </div>
-  </div>
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -18,7 +18,7 @@ if(isset($_GET['deletar'])) {
     $id = intval($_GET['deletar_repositorio']);
 
     // Primeiro pega o path do arquivo para excluir, se necessário
-    $sql_select = $conn->query("SELECT path FROM repositorio WHERE Id_user='$id'") or die($conn->error);
+    $sql_select = $conn->query("SELECT * FROM repositorio WHERE Id_user='$id'") or die($conn->error);
     $repo = $sql_select->fetch_assoc();
 
     // Remove o registro do banco
@@ -75,7 +75,8 @@ if(isset($_GET['deletar'])) {
     ?>
 <!------------------------------------------------------------------------------------------------------------------->
 <?php
-
+ $sql ="SELECT * FROM repositorio"; 
+ $cadastro  = $conn->query("$sql");
 
 // Verificar se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -101,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Fechar a conexão com o banco de dados
-    mysqli_close($conn);
+ 
 }
 ?>
 
@@ -125,9 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             if ($sql_query->num_rows == 0) {
                 ?>
-            <tr>
-                <td colspan="3">Nenhum resultado encontrado...</td>
-            </tr>
+         
             <?php
             } else {
                 while($dados = $sql_query->fetch_assoc()) {
@@ -141,3 +140,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } ?>
 
   
+<?php
+
+$sql = "SELECT Id_user FROM repositorio";
+$result = mysqli_query($conn, $sql);
+
+while ($row = mysqli_fetch_assoc($result)) {
+   
+}
+
+ 
+?>

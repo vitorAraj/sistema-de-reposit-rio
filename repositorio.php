@@ -1,5 +1,5 @@
 <?php
-include('adminUsuario.php');
+include('includes\navAdmin.php');
 include('enviarArquivo.php');
 ?>
 

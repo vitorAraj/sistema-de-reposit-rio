@@ -4,7 +4,7 @@ if(!isset($_SESSION)){
 }
 
 session_destroy();
-header("Location: index.php");
+header("Location: Home.php");
 
  die("
     <!DOCTYPE html>

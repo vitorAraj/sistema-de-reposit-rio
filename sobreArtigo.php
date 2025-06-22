@@ -1,88 +1,138 @@
-
 <?php
 include('includes/nav.php');
 include('enviarArquivo.php');
 
+if (isset($_GET['id'])) {
+    $id = intval($_GET['id']);
+    $sql = "SELECT * FROM repositorio WHERE Id_user = $id";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        $artigo = mysqli_fetch_assoc($result);
 ?>
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visualizar Artigo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body{
-      background-color:rgba(247, 247, 247, 0.9);
-    }
-    
-    .col-md-6{
-      width: 100%;
-      margin-top: 3rem;
+    body {
+          background-color:#f8f9fa; 
     }
 
-    .blog-header {
-      padding: 2rem 0;
-      border-bottom: 1px solid #e5e5e5;
+    nav{
+      background-color: #eeeeee;
     }
-    .blog-post {
-      margin-bottom: 4rem;
+
+    .card-artigo {
+      display: flex;
+      flex-direction: row;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      margin-top: 2rem;
+      box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.4);
     }
-    .blog-sidebar {
-      padding: 0.40 rem;
-      background-color: #f7f7f7;
-      border-radius: 0.25rem;
+
+    .card-artigo .content {
+      padding: 1.5rem;
+      background-color:rgba(238, 238, 238, 0.87);
+      flex: 1;
     }
-    .thumbnail {
+
+    .card-artigo .thumbnail {
       background-color: #343a40;
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100%;
+      width: 200px;
+      min-height: 100%;
+      text-align: center;
+    }
+
+    .text-primary{
+      color: #343a40;
+    }
+
+    .thumbnail:hover{
+      cursor: pointer;
+    }
+
+    .blog-sidebar {
+      background-color:rgba(238, 238, 238, 0.82);
+      padding: 1rem;
+      border-radius: 0.25rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.6);
+    }
+
+    .blog-sidebar h4 {
+      font-style: italic;
+      border-bottom: 1px solid #dee2e6;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .resumo-section {
+  
+      padding: 1rem;
+      border-radius: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .resumo-section h3 {
+      border-top: 2px solid rgba(13, 109, 253, 0.39); 
+      padding-top: 0.75rem;
+      margin-top: 0;
     }
   </style>
 </head>
 <body>
 
-<div class="container"> 
-  
-  <div class="row mb-2">
-    <div class="col-md-6">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">Artigo</strong>
-          <h3 class="mb-0">Titulo</h3>
-          <div class="mb-1 text-muted">Nov 12</div>
-          <p class="card-text mb-auto">palavras_chaves</p>
-          <a href="#" class="stretched-link">Ler Arigo</a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          <div class="thumbnail px-4" style="width: 200px;">Arquivo</div>
-        </div>
-      </div>
+<div class="container">
+
+
+  <div class="card-artigo">
+    <div class="content">
+      <strong class="text-primary"><?php echo $artigo['tipoDeProdução']; ?></strong>
+      <h3><?php echo $artigo['titulo_artigo']; ?></h3>
+      <p class="text-muted"><strong>Publicação:</strong> <?php echo date("d/m/Y", strtotime($artigo['data_Publicação'])); ?></p>
+      <p><strong>Palavras-chave:</strong> <?php echo $artigo['palavras_chaves']; ?></p>
+      <a target="_blank" href="<?php echo $artigo['path']; ?>" class="btn btn-primary">Ler Artigo</a>
+    </div>
+    <div class="thumbnail">
+      <a target="_blank" href="<?php echo $artigo['path']; ?>" style="color:white; text-decoration:none;">Arquivo</a>
     </div>
   </div>
 
-
-  <div class="row">
-    <div class="col-md-8 blog-main">
-      <h3 class="pb-4 mb-4 font-italic border-bottom">
+  
+  <div class="row mt-4">
+    
    
-      </h3>
-
-      <div class="blog-post">
-        <h2 class="blog-post-title">Resumo</h2> 
-        <p>This blog post shows a few different types ofdssadsdsad sdsdsd content...</p>
-      
+    <div class="col-md-8">
+      <div class="resumo-section">
+        <h3>Resumo</h3>
+        <p><?php echo nl2br($artigo['resumo']); ?></p>
       </div>
     </div>
 
+   
     <div class="col-md-4">
-      <div class="blog-sidebar mb-4">
-        <h4 class="fst-italic">Dados do autor</h4>
-        <p>Autoria </p>
-        <p>Orientador</p>
+
+      <div class="blog-sidebar">
+        <h4>Dados do Autor</h4>
+        <p><strong>Autoria:</strong> <?php echo $artigo['Autoria']; ?></p>
+        <p><strong>Orientador:</strong> <?php echo $artigo['nomo_orientador']; ?></p>
       </div>
 
       <div class="blog-sidebar">
-        <h4 class="fst-italic">Tema central</h4>
-        <h4 class="fst-italic">Tipo de produção</h4>
+        <h4>Tema Central: <?php echo $artigo['tema_central']; ?></h4>
+        <h4><?php echo $artigo['tipoDeProdução']; ?></h4>
       </div>
+
     </div>
   </div>
 
@@ -92,6 +142,18 @@ include('enviarArquivo.php');
 </body>
 </html>
 
+<?php
+    } else { 
+      ?>
+  <div class="alert alert-danger text-center"> <i class="bi bi-exclamation-circle-fill"></i>
+    <?php echo "<p>Artigo não encontrado.</p>"; ?>
+      
+  <?php  }
+} else { ?>
+<div class="alert alert-danger text-center"> <i class="bi bi-exclamation-circle-fill"></i>
+    <?php echo "<p>ID do artigo não informado.</p>"; ?>
+    
 
-
-
+    <?php
+}
+?>
