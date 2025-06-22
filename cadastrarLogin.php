@@ -1,13 +1,14 @@
 <?php
 include 'novoconexao.php';
 
-if (isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['nome'])) {
+if (isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['nome']) && isset($_POST['tipo'])) {
 
     $nome = $conn->real_escape_string($_POST['nome']);
     $email = $conn->real_escape_string($_POST['email']);
     $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // CRIPTOGRAFIA
+    $tipo = $conn->real_escape_string($_POST['tipo']); // Pega o tipo de usuário (user/admin)
     
-    $sql =  "INSERT INTO cadastro (nome_login, email, senha) VALUES ('$nome', '$email', '$senha')";
+    $sql =  "INSERT INTO cadastro (nome_login, email, senha, tipo) VALUES ('$nome', '$email', '$senha', '$tipo')";
     
     if (mysqli_query($conn, $sql)){ 
         $mensagem =  "Cadastrado do usuário realizado com sucesso!";
@@ -16,6 +17,10 @@ if (isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['nome'])) {
        $mensagem =  "Erro ao cadastrar o usuário: " . mysqli_error($conn);
  }mysqli_close($conn);
     
+}
+elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Caso o form seja enviado mas o campo tipo não seja marcado
+    $mensagemErro = "Por favor, selecione o tipo de usuário.";
 }
 ?>
 
@@ -92,7 +97,9 @@ if (isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['nome'])) {
       margin-bottom: 20px;
     }
 
-
+    .form-check-input{
+      border: 2px solid black;
+    }
       a {
       color:rgb(43, 43, 43);
       text-decoration: none;
@@ -100,6 +107,18 @@ if (isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['nome'])) {
 
     a:hover {
       color: rgb(63, 63, 63);
+    }
+
+
+    .payment-options {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+     
+    }
+
+    .bi-exclamation-circle-fill{
+      color:rgb(248, 74, 83);
     }
   </style>
 </head>
@@ -114,6 +133,10 @@ if (isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['nome'])) {
       <div class="alert alert-info">
         <?php echo $mensagem; ?>
       </div>
+      <?php elseif (!empty($mensagemErro)) : ?>
+  <div class="alert alert-danger text-center"> <i class="bi bi-exclamation-circle-fill"></i>
+    <?php echo $mensagemErro; ?>
+  </div> 
     <?php endif; ?>
 
  <div class="form-floating">
@@ -129,6 +152,23 @@ if (isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['nome'])) {
       <input type="password" class="form-control" id="floatingPassword" name="senha" placeholder="Password" required>
       <label for="floatingPassword">Senha</label>
     </div>
+
+    
+  <div class="payment-options">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="tipo" id="user" value="user">
+      <label class="form-check-label" for="user">
+        User
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="tipo" id="admin" value="admin">
+      <label class="form-check-label" for="admin">
+        Admin
+      </label>
+    </div>
+  </div>
+
 
     <div class="checkbox mb-3 mt-2">
       <label>

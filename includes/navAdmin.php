@@ -112,29 +112,29 @@ include('restrita.php');
 </head>
 <body>
 
-  <!-- Botão Toggle -->
+ 
   <button class="toggle-btn" onclick="toggleSidebar()"><i class="bi bi-list"></i></button>
 
-  <!-- Sidebar -->
+
   <div id="sidebar" class="sidebar d-md-block">
     <div>
       <h4 class="sidebar-heading"><i class="bi bi-bar-chart-line"></i> Perfil</h4>
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li>
-          <a href="Home.php" class="nav-link"><i class="bi bi-house-door-fill"></i>Home</a>
+          <a href="adminUsuario.php" class="nav-link"><i class="bi bi-house-door-fill"></i>Início</a>
         </li>
         <li>
-          <a href="adminUsuario.php" class="nav-link"><i class="bi bi-pencil-square"></i> Editar Perfil</a>
+          <a href="editarPefil.php" class="nav-link"><i class="bi bi-pencil-square"></i>Editar Perfil</a>
         </li>
         <li>
-          <a href="#" class="nav-link"><i class="bi bi-book"></i>Consultar Artigos</a>
+          <a href="sistemaBusca.php" class="nav-link"><i class="bi bi-book"></i>Consultar Artigos</a>
         </li>
         <li>
-          <a href="Repositorio.php" class="nav-link"><i class="bi bi-cloud-upload"></i> Cadastrar Artigos</a>
+          <a href="Repositorio.php" class="nav-link"><i class="bi bi-cloud-upload"></i>Cadastrar Artigos</a>
         </li>
         <li>
-          <a href="logout.php" class="nav-link"><i class="bi bi-x-circle"></i> Sair</a>
+          <a href="logout.php" class="nav-link"><i class="bi bi-x-circle"></i>Sair</a>
         </li>
       </ul>
     </div>
@@ -147,7 +147,10 @@ include('restrita.php');
     </div>
   </div>
 
-
+  <!-- Conteúdo Principal -->
+  <div class="container content" style="margin-left: 260px; padding-top: 20px;">
+    <h2>Bem-vindo, <?php echo $_SESSION['nome_login']; ?>!</h2>
+  </div>
 
   <script>
     function toggleSidebar() {

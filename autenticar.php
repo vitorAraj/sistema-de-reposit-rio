@@ -19,13 +19,19 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
         if ($sql_query->num_rows == 1) {
             $cadastro = $sql_query->fetch_assoc();
 
-            // Verifica a senha usando password_verify
             if (password_verify($senha, $cadastro['senha'])) {
                 $_SESSION['id_login'] = $cadastro['id_login'];
                 $_SESSION['nome_login'] = $cadastro['nome_login'];
+                $_SESSION['email'] = $cadastro['email'];
+                $_SESSION['tipo'] = $cadastro['tipo']; 
 
-                header("Location: adminUsuario.php");
-                exit;
+               
+                if ($cadastro['tipo'] == 'admin') {
+                    header('Location: administração.php');
+                    exit;
+                } else if ($cadastro['tipo'] == 'user') {
+                    header('Location: adminUsuario.php');
+                    exit;}  
             } else {
                  $mensagem = "Senha incorreta!";
             }
@@ -35,4 +41,3 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
     }
 }
 ?>
-

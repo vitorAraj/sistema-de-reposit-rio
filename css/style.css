@@ -2,79 +2,7 @@ body {
     margin: 0;
 
 }
-
-.main-login{
-    width: 100vw;
-    height: 100vh;
-    background: #201b2c;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.left-login{
-    width: 50vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border-right: #00ff88 solid 3px;
-
-}
-
-.left-login , h1{
-    color: #000000;
-
-}
-
-.right-login{
-    padding-left: 10px;
-    width: 50vw;
-    height: 100vh;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    
-}
-
-.card-login{
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 30px 35px;
-    background:#2f2841;
-    border-radius: 20px;
-    box-shadow: 0px 10px 40px #00000056;
-
-}
-
-.h1{
-    color: #535353;
-    font-weight: 800;
-    margin: 0;
-}
-
-.text{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    justify-content: center;
-}
-
-
 /***************************************************************************************************************************************/
-
-.card > .card-link { 
-    color: #181819; 
-    text-decoration: none;
-}
-
-.card > .card-link:hover { 
-    color: #0056b3; 
-}
 
 #admin .nav-link {
     color: white;
@@ -85,15 +13,13 @@ body {
     color: black;
 }
 
-/* Esta propriedade pegará os
-espaços em branco existentes nos textos, 
-e adicionará uma "quebra" em cada um deles. */
+
 .ajusta-texto {
     white-space: pre-wrap;
 }  
 
 .bi{
-    color: #133f6e;
+    color: #070707;
 }
 
 .bi-search{
@@ -103,6 +29,7 @@ e adicionará uma "quebra" em cada um deles. */
 .btn-outline-secondary{
     margin: 10px;
     color: #181819;
+
 }
 
 .bi-book{
@@ -117,7 +44,7 @@ e adicionará uma "quebra" em cada um deles. */
 
 
 body {
-      background-color: #ffffff;
+      background-color: #e7e7e7;
       color: rgb(0, 0, 0);
     }
     .carousel-item {
@@ -141,10 +68,10 @@ body {
       margin: 0 auto 1rem;
     }
     .card {
-      background-color: #161b22;
+   
       border: none;
     }
-    .card button {
-      background-color: #6c757d;
+    .card {
+      background-color: #eeeeee;
       border: none;
     }
