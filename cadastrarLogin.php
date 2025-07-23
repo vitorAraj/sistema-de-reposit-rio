@@ -1,184 +1,116 @@
 <?php
+include('includes\navAdminTotal.php');
 include 'novoconexao.php';
 
-if (isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['nome']) && isset($_POST['tipo'])) {
-
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email'], $_POST['senha'], $_POST['nome'], $_POST['tipo'])) {
     $nome = $conn->real_escape_string($_POST['nome']);
     $email = $conn->real_escape_string($_POST['email']);
-    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // CRIPTOGRAFIA
-    $tipo = $conn->real_escape_string($_POST['tipo']); // Pega o tipo de usuário (user/admin)
-    
-    $sql =  "INSERT INTO cadastro (nome_login, email, senha, tipo) VALUES ('$nome', '$email', '$senha', '$tipo')";
-    
-    if (mysqli_query($conn, $sql)){ 
-        $mensagem =  "Cadastrado do usuário realizado com sucesso!";
-     
-     } else {
-       $mensagem =  "Erro ao cadastrar o usuário: " . mysqli_error($conn);
- }mysqli_close($conn);
-    
-}
-elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Caso o form seja enviado mas o campo tipo não seja marcado
-    $mensagemErro = "Por favor, selecione o tipo de usuário.";
+    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+    $tipo = $conn->real_escape_string($_POST['tipo']);
+
+    $sql = "INSERT INTO cadastro (nome_login, email, senha, tipo) VALUES ('$nome', '$email', '$senha', '$tipo')";
+
+    if (mysqli_query($conn, $sql)) {
+        $mensagem = "Usuário cadastrado com sucesso!";
+    } else {
+        $mensagemErro = "Erro ao cadastrar: " . mysqli_error($conn);
+    }
+    mysqli_close($conn);
+} elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $mensagemErro = "Por favor, preencha todos os campos e selecione o tipo de usuário.";
 }
 ?>
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cadastrar usuário</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="css\style.css">
   <style>
-    html, body {
-      height: 100%;
+   
+    .card {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
-      background-color: #f5f5f5;
-     
-    }
-
-    .form-signin {
-      width: 200%;
-      max-width: 330px;
-      padding: 15px;
-      margin: auto;
-     
-    }
-
-    .form-signin .checkbox {
-      font-weight: 400;
-      
-    }
-
-    .form-signin .form-control {
-      margin-bottom: -1px;
-      border-radius: 0;
-     
-    }
-
-    .form-signin .form-control:last-child {
-      margin-bottom: 10px;
-
-      border-radius: 10rem 0 .25rem .25rem;
-    }
-
-    .form-floating{ 
-    margin-bottom: 10px;
-}
-
-.form-signin .form-control {
-  margin-bottom: -1px;
-  border-radius: 0;
-  border: 1px solid rgb(158, 158, 158); 
-  border-radius: 4px;
-}
-
-.bi-send-fill{
-    margin: 2px;
-    color: #f5f5f5;
-}
-
-
-    .logo {
-      width: 72px;
-      height: 72px;
-      margin-bottom: 20px;
-    }
-
     .form-check-input{
-      border: 2px solid black;
+      border: 1px solid #000;
     }
-      a {
-      color:rgb(43, 43, 43);
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    .form-check-input {
+      margin-right: 5px;
+    }
+    a {
       text-decoration: none;
     }
 
-    a:hover {
-      color: rgb(63, 63, 63);
+     @media (min-width: 768px) {
+      .card{
+        margin-left: 40%;
+        margin-top: 10%;  
+        padding: 20px;
+      }
     }
 
-
-    .payment-options {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-     
-    }
-
-    .bi-exclamation-circle-fill{
-      color:rgb(248, 74, 83);
+    @media (max-width: 768px) {
+      .card {
+        margin-left: 3%;
+        margin-top: 30%;
+      }
+      .d-md-block{
+        display: hidden;
+      }
     }
   </style>
-</head>
-<body class="text-center">
 
-   <form  action="" method="POST">
-<main class="form-signin">
-  <img class="mb-4 logo" src="img\logo-removebg-preview.png" >
-  <h1 class="h3 mb-3 fw-normal">Cadastro de usuário</h1>
 
-  <?php if (!empty($mensagem)) : ?>
-      <div class="alert alert-info">
-        <?php echo $mensagem; ?>
-      </div>
-      <?php elseif (!empty($mensagemErro)) : ?>
-  <div class="alert alert-danger text-center"> <i class="bi bi-exclamation-circle-fill"></i>
-    <?php echo $mensagemErro; ?>
-  </div> 
-    <?php endif; ?>
-
- <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" name="nome" placeholder="seu nome" required>
-      <label for="floatingInput">Nome</label>
-    </div>
-
-    <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com" required>
-      <label for="floatingInput">E-mail</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" name="senha" placeholder="Password" required>
-      <label for="floatingPassword">Senha</label>
-    </div>
-
-    
-  <div class="payment-options">
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="tipo" id="user" value="user">
-      <label class="form-check-label" for="user">
-        User
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="tipo" id="admin" value="admin">
-      <label class="form-check-label" for="admin">
-        Admin
-      </label>
-    </div>
+<div class="card p-4">
+  <div class="text-center">
+    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="avatar" alt="Avatar">
+    <h4>Cadastro de Usuário</h4>
+    <small class="text-muted">Preencha os campos abaixo para criar sua conta.</small>
   </div>
 
+  <?php if (!empty($mensagem)) : ?>
+    <div class="alert alert-success mt-3"><?php echo $mensagem; ?></div>
+  <?php elseif (!empty($mensagemErro)) : ?>
+    <div class="alert alert-danger mt-3"><?php echo $mensagemErro; ?></div>
+  <?php endif; ?>
 
-    <div class="checkbox mb-3 mt-2">
-      <label>
-         <a href="login.php">Voltar</a>
-      </label>
+  <form method="POST" class="mt-3">
+    <div class="form-floating mb-2">
+      <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu Nome" required>
+      <label for="nome">Nome</label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit"><i class="bi bi-send-fill"></i> Cadastrar</button>
+
+    <div class="form-floating mb-2">
+      <input type="email" class="form-control" id="email" name="email" placeholder="email@exemplo.com" required>
+      <label for="email">Email</label>
+    </div>
+
+    <div class="form-floating mb-2">
+      <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
+      <label for="senha">Senha</label>
+    </div>
+
+    <div class="d-flex justify-content-center mb-3">
+      <div class="form-check me-3">
+        <input class="form-check-input" type="radio" name="tipo" id="user" value="user">
+        <label class="form-check-label" for="user">User</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="tipo" id="admin" value="admin">
+        <label class="form-check-label" for="admin">Admin</label>
+      </div>
+    </div>
+
+    <button class="btn btn-primary w-100" type="submit">Cadastrar</button>
+
+   
   </form>
+</div>
 
-</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-</body>
-</html>

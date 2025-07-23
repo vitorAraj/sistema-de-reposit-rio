@@ -94,6 +94,11 @@ include('restrita.php');
   opacity: 1;
 }
 
+     .logo-img {
+  height: 50px;
+  width: auto;
+}
+
     @media (min-width: 768px) {
       .toggle-btn {
         display: none;
@@ -118,20 +123,14 @@ include('restrita.php');
 
   <div id="sidebar" class="sidebar d-md-block">
     <div>
-      <h4 class="sidebar-heading"><i class="bi bi-bar-chart-line"></i> Perfil</h4>
+      <strong> <h4 class="sidebar-heading"><img src="img\logoRui.png" alt="Logo" class="logo-img me-2">Perfil</h4></strong>
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li>
-          <a href="adminUsuario.php" class="nav-link"><i class="bi bi-house-door-fill"></i>Início</a>
+          <a href="editarUser.php" class="nav-link"><i class="bi bi-pencil-square"></i>Editar Perfil</a>
         </li>
         <li>
-          <a href="editarPefil.php" class="nav-link"><i class="bi bi-pencil-square"></i>Editar Perfil</a>
-        </li>
-        <li>
-          <a href="sistemaBusca.php" class="nav-link"><i class="bi bi-book"></i>Consultar Artigos</a>
-        </li>
-        <li>
-          <a href="Repositorio.php" class="nav-link"><i class="bi bi-cloud-upload"></i>Cadastrar Artigos</a>
+          <a href="repositorioUser.php" class="nav-link"><i class="bi bi-cloud-upload"></i>Cadastrar Artigos</a>
         </li>
         <li>
           <a href="logout.php" class="nav-link"><i class="bi bi-x-circle"></i>Sair</a>
@@ -147,10 +146,6 @@ include('restrita.php');
     </div>
   </div>
 
-  <!-- Conteúdo Principal -->
-  <div class="container content" style="margin-left: 260px; padding-top: 20px;">
-    <h2>Bem-vindo, <?php echo $_SESSION['nome_login']; ?>!</h2>
-  </div>
 
   <script>
     function toggleSidebar() {

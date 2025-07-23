@@ -88,6 +88,10 @@ if (isset($_GET['id'])) {
       padding-top: 0.75rem;
       margin-top: 0;
     }
+
+    .titulo{
+      text-transform: capitalize;
+    }
   </style>
 </head>
 <body>
@@ -98,7 +102,7 @@ if (isset($_GET['id'])) {
   <div class="card-artigo">
     <div class="content">
       <strong class="text-primary"><?php echo $artigo['tipoDeProdução']; ?></strong>
-      <h3><?php echo $artigo['titulo_artigo']; ?></h3>
+      <h3 class="titulo"><?php echo $artigo['titulo_artigo']; ?></h3>
       <p class="text-muted"><strong>Publicação:</strong> <?php echo date("d/m/Y", strtotime($artigo['data_Publicação'])); ?></p>
       <p><strong>Palavras-chave:</strong> <?php echo $artigo['palavras_chaves']; ?></p>
       <a target="_blank" href="<?php echo $artigo['path']; ?>" class="btn btn-primary">Ler Artigo</a>

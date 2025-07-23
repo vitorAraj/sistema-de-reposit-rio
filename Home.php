@@ -157,18 +157,18 @@ include('includes\nav.php');
     <div class="row g-4">
       <div class="col-md-6">
         <div class="card-custom p-4 h-100">
-          <h4>TCC</h4>
+          <h4>Artigos Científicos</h4>
           <p>
-            Swap the background-color utility and add color utility to mix up the jumbotron look. Then, mix and match with additional component themes and more.
+            Produções voltadas para a investigação e aprofundamento de temas relevantes. Aqui, os alunos aplicam metodologia científica para desenvolver ideias, análises e soluções.
           </p>
 
         </div>
       </div>
       <div class="col-md-6">
         <div class="card-custom p-4 h-100 bordered">
-          <h4>Relatório de Estágio</h4>
+          <h4>Projetos Interdisciplinares</h4>
           <p>
-            Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.
+            Trabalhos que integram diferentes áreas do conhecimento, promovendo uma visão mais ampla e conectada da aprendizagem.
           </p>
       
         </div>
@@ -227,32 +227,57 @@ include('includes\nav.php');
 </ul>
 </div>
   
+<style>
+  footer {
+    background-color: #212529;
+    color: #fff;
+    padding-top: 30px;
+  }
 
+  .footer-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .social-icons a {
+    color: #ccc;
+    margin: 0 10px;
+    font-size: 1.5rem;
+    transition: 0.3s;
+  }
+
+  .social-icons a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+  }
+
+  .footer-line {
+    border-top: 1px solid #444; /* linha discreta como na imagem */
+    width: 100%;
+    margin-bottom: 10px;
+  }
+</style>
 
 <footer>
-    <div class="container">
-      <div class="row text-start text-md-left">
-        <div class="col-md-4 mb-4">
-          <h5 class="footer-title">Páginas</h5>
-       
-        </div>
-        <div class="col-md-4 mb-4">
-          <h5 class="footer-title">Contato</h5>
-          <span class="footer-contact">75-2332-2323</span>
-          <span class="footer-contact">Cerboninal@gmail.com</span>
-        </div>
-        <div class="col-md-4">
-          <h5 class="footer-title">Rede Social</h5>
-          <div class="social-icons mt-2">
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-whatsapp"></i></a>
-            <a target="_blank" href="https://www.instagram.com/cetirbboninal/"><i class="bi bi-instagram"></i></a>
-            <a target="_blank" href="https://github.com/vitorAraj"><i class="bi bi-github"></i></a>
-          </div>
-        </div>
-      </div>
+   <strong> <h4 class="sidebar-heading"><img src="img\logoRui.png" alt="Logo" class="logo-img me-2">Artigos</h4></strong>
+  <div class="container text-center">
+    <!-- Linha discreta no topo do footer -->
+    <div class="footer-line"></div>
+
+    
+    <div class="social-icons mb-1">
+      <a target="_blank" href="https://www.instagram.com/cetirbboninal/"><i class="bi bi-instagram"></i></a>
+      <a target="_blank" href="https://github.com/vitorAraj"><i class="bi bi-github"></i></a>
     </div>
-  </footer>
+    <div class="mb-2">
+      Colégio Estadual de Tempo Integral Rui Barbosa <br>
+      Desenvolvedor: Vitor Araújo Marques Ferreira - Téc.Informática IFBA <br> 
+      ®Todos os direitos reservados <br>
+     2025.
+    </div>
+  </div>
+</footer>
+
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -3,112 +3,85 @@ include 'autenticar.php';
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
 
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
-
     body {
       background-color: #212529; /* fundo escuro */
-      color: #fff;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-
-    .form-signin {
+    .card {
       width: 100%;
-      max-width: 330px;
-      padding: 15px;
+      background-color:rgb(216, 215, 215);
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
     .form-floating {
       margin-bottom: 10px;
     }
-
-    .form-control {
-      background-color: #343a40;
-      color: #fff;
-      border-color: #495057;
-    }
-
-    .form-control:focus {
-      background-color: #343a40;
-      color: #fff;
-      border-color: #0d6efd;
-      box-shadow: none;
-    }
-
-    .bi-send-fill {
-      margin: 2px;
-      color: #fff;
-    }
-
-    .logo {
-      width: 72px;
-      height: 72px;
-      margin-bottom: 10px;
-    }
-
     a {
-      color: #adb5bd;
       text-decoration: none;
     }
-
-    a:hover {
-      color: #fff;
-    }
-
-    .bi-exclamation-circle-fill{
-      color:rgb(248, 74, 83);
+    .bi-send-fill {
+      margin-right: 5px;
     }
   </style>
 </head>
 <body>
 
-  
-  <main class="form-signin text-center">
-    <form action="" method="POST">
-      <img class="mb-4 logo" src="img/logo-removebg-preview.png" alt="Logo" />
-      <h1 class="h2 mb-3 fw-normal">Entrar</h1>
+<div class="card p-4">
+  <div class="text-center">
+    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="avatar" alt="Avatar">
+    <h4>Login</h4>
+    <small class="text-muted">Acesse sua conta com seu email e senha.</small>
+  </div>
 
-   <?php if (!empty($mensagem)) : ?>
-  <div class="alert alert-danger text-center"> <i class="bi bi-exclamation-circle-fill"></i>
-    <?php echo $mensagem; ?>
-  </div> 
-<?php endif; ?>
+  <?php if (!empty($mensagem)) : ?>
+    <div class="alert alert-danger mt-3">
+      <i class="bi bi-exclamation-circle-fill"></i> <?php echo $mensagem; ?>
+    </div>
+  <?php endif; ?>
 
-      <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInput" name="email" placeholder="seu nome" required>
-        <label for="floatingInput">E-mail</label>
-      </div>
+  <form method="POST" class="mt-3">
+    <div class="form-floating mb-2">
+      <input type="email" class="form-control" id="email" name="email" placeholder="email@exemplo.com" required>
+      <label for="email">Email</label>
+    </div>
 
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" name="senha" placeholder="Senha" required>
-        <label for="floatingPassword">Senha</label>
-      </div>
+    <div class="form-floating mb-3">
+      <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
+      <label for="senha">Senha</label>
+    </div>
 
-      <div class="checkbox mb-3 mt-2">
-        <label><a href="cadastrarLogin.php">Cadastrar</a></label>
-      </div>
+    <button type="submit" class="btn btn-primary w-100">
+      <i class="bi bi-send-fill"></i> Entrar
+    </button>
 
-      <button class="w-100 btn btn-lg btn-primary" type="submit">
-        <i class="bi bi-send-fill"></i> Entrar
-      </button>
-    </form>
-  </main>
+    <div class="mt-3 text-center">
+      <small>Esta seção é destinada apenas aos usuários autorizados</small>
+    </div>
+  </form>
+</div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

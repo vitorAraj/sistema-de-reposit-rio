@@ -19,13 +19,17 @@ include('includes\navAdmin.php');
       font-size: 2rem;
       margin-bottom: 0.5rem;
     }
+
+    
+  @media (max-width: 768px) {
+    .main-content {
+      margin-left: 0;
+    }
+  }
   </style>
 
-
-
-
 <div class="container py-5">
-  <h3>FERRAMENTAS DE ADMINSTRAÇÃO</h3>
+  <h3>FERRAMENTAS</h3>
   <hr>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 icon-grid">
     <div class="col text-center">
@@ -50,13 +54,6 @@ include('includes\navAdmin.php');
       </a>
     </div>
     
-    <div class="col text-center">
-      <a href="#">
-        <i class="bi bi-speedometer2"></i>
-        <h5>Consutar Artigos</h5>
-        <p>Paragraph of text beneath the heading to explain the heading.</p>
-      </a>
-    </div>
     
     <div class="col text-center">
       <a href="#">

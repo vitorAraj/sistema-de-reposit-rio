@@ -25,9 +25,11 @@ if(isset($_GET['deletar'])) {
     $deletar_sql = $conn->query("DELETE FROM repositorio WHERE Id_user='$id'") or die($conn->error);
 
     if ($deletar_sql) {
-        echo "<p>Registro do repositório excluído com sucesso!</p>";
+        $messagemExitRep = "<p>Registro do repositório excluído com sucesso!</p>";
     }
 }
+
+
 
   if (isset($_GET['deletar_usuario'])) {
     $id = intval($_GET['deletar_usuario']);
@@ -39,7 +41,7 @@ if(isset($_GET['deletar'])) {
     $deletar_sql = $conn->query("DELETE FROM cadastro WHERE id_login='$id'") or die($conn->error);
 
     if ($deletar_sql) {
-        echo "<p>Registro do repositório excluído com sucesso!</p>";
+        $messagemExit = "<p>Registro do Usuário excluído com sucesso!</p>";
     }
 } 
         if(isset($_FILES['arquivo'])) {

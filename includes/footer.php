@@ -97,3 +97,81 @@
 </html>
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+  footer {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    padding: 30px 0;
+    border-top: 1px solid #dee2e6;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-right {
+    flex: 1;
+    min-width: 150px;
+  }
+
+  .footer-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-links a {
+    margin: 0 10px;
+    color: #6c757d;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+  }
+
+  .footer-links a:hover {
+    text-decoration: underline;
+    color: #0d6efd;
+  }
+
+  .footer-icon {
+    font-size: 30px;
+    background-color: #000;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+</style>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-left">
+        &copy; 2025 Company, Inc
+      </div>
+      <div class="footer-center">
+        <span class="footer-icon">B</span>
+      </div>
+      <div class="footer-right footer-links">
+        <a href="#">Home</a>
+        <a href="#">Features</a>
+        <a href="#">Pricing</a>
+        <a href="#">FAQs</a>
+        <a href="#">About</a>
+      </div>
+    </div>
+  </div>
+</footer>
