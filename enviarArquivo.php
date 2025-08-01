@@ -77,8 +77,8 @@ if(isset($_GET['deletar'])) {
     ?>
 <!------------------------------------------------------------------------------------------------------------------->
 <?php
- $sql ="SELECT * FROM repositorio"; 
- $cadastro  = $conn->query("$sql");
+$sql = "SELECT * FROM repositorio"; 
+$cadastro = $conn->query($sql);
 
 // Verificar se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -91,22 +91,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $temaCentral = mysqli_real_escape_string($conn, $_POST['tema_central']);
     $tipoDeProducao = mysqli_real_escape_string($conn, $_POST['tipo_producao']);
     $resumo = mysqli_real_escape_string($conn, $_POST['resumo']);
-    
-    
-    
-    $sql = "INSERT INTO repositorio (Autoria, nomo_orientador, titulo_artigo, palavras_chaves,data_Publicação, tema_central, tipoDeProdução, path ,resumo)
-     VALUES ( '$autoria', '$nome_orientador', '$tituloArtigo', '$palavras_chave','$data', '$temaCentral', '$tipoDeProducao', '$path' ,'$resumo')";
 
-    if (mysqli_query($conn, $sql)) {
-        $envio= "Artigo cadastrado com sucesso! para acessá-lo <a target=\"_blank\" href=\"arquivos/$novoNomeDoArquivo.$extansao\"> clique aqui.</a>  ";
+    // Verifica se já existe um artigo com o mesmo título e o mesmo arquivo
+    $verifica = $conn->query("SELECT * FROM repositorio WHERE Autoria = '$autoria' AND path = '$path'");
+    
+    if ($verifica->num_rows > 0) {
+        $envio = "Este artigo já está cadastrado no sistema.";
     } else {
-        $envio= "Erro ao cadastrar o usuário: " . mysqli_error($conn);
-    }
+        // Inserir novo artigo
+        $sql = "INSERT INTO repositorio 
+        (Autoria, nomo_orientador, titulo_artigo, palavras_chaves, data_Publicação, tema_central, tipoDeProdução, path, resumo) 
+        VALUES 
+        ('$autoria', '$nome_orientador', '$tituloArtigo', '$palavras_chave', '$data', '$temaCentral', '$tipoDeProducao', '$path', '$resumo')";
 
-    // Fechar a conexão com o banco de dados
- 
+        if (mysqli_query($conn, $sql)) {
+            $envio = "Artigo cadastrado com sucesso! Para acessá-lo <a target=\"_blank\" href=\"arquivos/$novoNomeDoArquivo.$extansao\">clique aqui</a>.";
+        } else {
+            $envio = "Erro ao cadastrar o artigo: " . mysqli_error($conn);
+        }
+    }
 }
 ?>
+
 
 <?php
 //include('restrita.php');

@@ -7,6 +7,8 @@ $sqlTotal = "SELECT COUNT(*) AS total FROM repositorio";
 $resultTotal = $conn->query($sqlTotal);
 $totalArtigo = $resultTotal->fetch_assoc()['total'];
 
+
+
 ?>
 
 <style>

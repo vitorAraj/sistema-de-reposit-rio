@@ -272,8 +272,8 @@ include('includes\nav.php');
     <div class="mb-2">
       Colégio Estadual de Tempo Integral Rui Barbosa <br>
       Desenvolvedor: Vitor Araújo Marques Ferreira - Téc.Informática IFBA <br> 
-      ®Todos os direitos reservados <br>
-     2025.
+      ®Todos os direitos reservados -  2025. <br>
+   
     </div>
   </div>
 </footer>

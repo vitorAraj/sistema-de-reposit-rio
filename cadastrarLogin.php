@@ -10,15 +10,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email'], $_POST['senha
 
     $sql = "INSERT INTO cadastro (nome_login, email, senha, tipo) VALUES ('$nome', '$email', '$senha', '$tipo')";
 
-    if (mysqli_query($conn, $sql)) {
-        $mensagem = "Usuário cadastrado com sucesso!";
+   // Verificar se email já existe
+    $check = $conn->query("SELECT id_login FROM cadastro WHERE email = '$email'");
+    if ($check->num_rows > 0) {
+        $mensagemErro = "Este e-mail já está cadastrado!";
     } else {
-        $mensagemErro = "Erro ao cadastrar: " . mysqli_error($conn);
+        $sqlInsert = "INSERT INTO cadastro (nome_login, email, senha, tipo) VALUES ('$nome', '$email', '$senha', '$tipo')";
+        if ($conn->query($sqlInsert)) {
+            $mensagem = "Usuário cadastrado com sucesso!";
+        } else {
+            $mensagemErro = "Erro ao cadastrar: " . $conn->error;
+        }
     }
-    mysqli_close($conn);
-} elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $mensagemErro = "Por favor, preencha todos os campos e selecione o tipo de usuário.";
 }
+
 ?>
 
   <style>

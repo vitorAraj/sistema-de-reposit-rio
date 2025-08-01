@@ -1,7 +1,7 @@
 <?php
-session_start();
-include 'novoconexao.php';
 
+include 'novoconexao.php';
+session_start();
 if (isset($_POST['email']) && isset($_POST['senha'])) {
 
     if (strlen($_POST['email']) == 0) {

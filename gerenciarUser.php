@@ -106,6 +106,9 @@ $cadastro = $conn->query($sql);
       <?php elseif (!empty($messagemExit)) : ?>
   <div class="alert alert-info fade-message" id="mensagem-temporaria">
     <?php echo $messagemExit; ?>
+     <?php elseif (!empty($mensagemErro)) : ?>
+  <div class="alert alert-danger mt-3" id="mensagem-temporaria">
+    <?php echo $mensagemErro; ?>
   </div>
 
       

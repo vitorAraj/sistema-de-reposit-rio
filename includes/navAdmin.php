@@ -127,7 +127,10 @@ include('restrita.php');
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li>
-          <a href="editarUser.php" class="nav-link"><i class="bi bi-pencil-square"></i>Editar Perfil</a>
+          <a href="adminUsuario.php" class="nav-link"><i class="bi bi-house-door-fill"></i>Início</a>
+        </li>
+        <li>
+          <a href="editarPefilUser.php" class="nav-link"><i class="bi bi-pencil-square"></i>Editar Perfil</a>
         </li>
         <li>
           <a href="repositorioUser.php" class="nav-link"><i class="bi bi-cloud-upload"></i>Cadastrar Artigos</a>

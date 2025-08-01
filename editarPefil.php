@@ -70,13 +70,23 @@ article {
 .container{
 
 }
-@media (min-width: 768px) {
-    .container {
-        width: 83%;
-        margin-left: 650px;
+ @media (min-width: 768px) {
+      .card{
+        margin-left: 40%;
+        margin-top: 10%;  
         padding: 20px;
+      }
     }
-}
+
+    @media (max-width: 768px) {
+      .card {
+        margin-left: 3%;
+        margin-top: 30%;
+      }
+      .d-md-block{
+        display: hidden;
+      }
+    }
 </style>
 
 <div class="container">
@@ -103,7 +113,7 @@ article {
             <div class="mb-3">
                 <label class="form-label" for="tipo">Tipo:</label>
                 <select class="form-select" name="tipo" id="tipo" required>
-                    <option value="editor" <?php if ($_SESSION['tipo'] === 'editor') echo 'selected'; ?>>Editor</option>
+                    <option value="user" <?php if ($_SESSION['tipo'] === 'User') echo 'selected'; ?>>Editor</option>
                     <option value="admin" <?php if ($_SESSION['tipo'] === 'admin') echo 'selected'; ?>>Administrador</option>
                 </select>
             </div>
