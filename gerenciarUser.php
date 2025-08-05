@@ -99,17 +99,20 @@ $cadastro = $conn->query($sql);
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h4>Gerenciamento de Usuários</h4>
 
-    <?php if (!empty($envio)) : ?>
-      <div class="alert alert-info fade-message" id="mensagem-temporaria">
-        <?php echo $envio; ?>
-      </div>
-      <?php elseif (!empty($messagemExit)) : ?>
-  <div class="alert alert-info fade-message" id="mensagem-temporaria">
-    <?php echo $messagemExit; ?>
-     <?php elseif (!empty($mensagemErro)) : ?>
-  <div class="alert alert-danger mt-3" id="mensagem-temporaria">
+   <?php if (!empty($mensagem)) : ?>
+  <div class="alert alert-success fade-message" id="mensagem-temporaria">
+    <?php echo $mensagem; ?>
+  </div>
+<?php elseif (!empty($mensagemErro)) : ?>
+  <div class="alert alert-danger fade-message" id="mensagem-temporaria">
     <?php echo $mensagemErro; ?>
   </div>
+
+  <?php elseif (!empty($messagemExit)) : ?>
+  <div class="alert alert-danger fade-message" id="mensagem-temporaria">
+    <?php echo $messagemExit; ?>
+  </div>
+<?php endif; ?>
 
       
   <script>
@@ -122,7 +125,7 @@ $cadastro = $conn->query($sql);
       }
     }, 3000); // 5 segundos
   </script>
-    <?php endif; ?>
+ 
 
     <button class="btn btn-primary btn-sm btn-novo" data-bs-toggle="modal" data-bs-target="#modalCadastroUsuario">
       <i class="bi bi-person-plus"></i> Novo Usuário

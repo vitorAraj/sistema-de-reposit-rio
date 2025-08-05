@@ -8,7 +8,6 @@ $resultTotal = $conn->query($sqlTotal);
 $totalArtigo = $resultTotal->fetch_assoc()['total'];
 
 
-
 ?>
 
 <style>

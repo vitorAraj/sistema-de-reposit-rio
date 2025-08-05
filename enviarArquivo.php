@@ -25,7 +25,7 @@ if(isset($_GET['deletar'])) {
     $deletar_sql = $conn->query("DELETE FROM repositorio WHERE Id_user='$id'") or die($conn->error);
 
     if ($deletar_sql) {
-        $messagemExitRep = "<p>Registro do repositório excluído com sucesso!</p>";
+        $messagemExitRep = "Registro do repositório excluído com sucesso!";
     }
 }
 

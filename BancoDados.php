@@ -281,26 +281,6 @@ include('enviarArquivo.php');
 
 <?php
 
-function calcularTamanhoPDFs($diretorio) {
-    $tamanhoTotal = 0;
-
-    if (is_dir($diretorio)) {
-        $arquivos = scandir($diretorio);
-        foreach ($arquivos as $arquivo) {
-            $caminho = $diretorio . DIRECTORY_SEPARATOR . $arquivo;
-            if (is_file($caminho) && strtolower(pathinfo($arquivo, PATHINFO_EXTENSION)) === 'pdf') {
-                $tamanhoTotal += filesize($caminho);
-            }
-        }
-    }
-
-    return $tamanhoTotal / (1024 * 1024 * 1024); // Bytes para GB
-}
-
-$tamanhoPDFsGB = calcularTamanhoPDFs('arquivos'); // ajuste o nome da pasta se for diferente
-$tamanhoPDFsFormatado = number_format($tamanhoPDFsGB, 2); // 2 casas decimais
-
-
 ?>
 
 <div class="alert alert-info mt-3">
