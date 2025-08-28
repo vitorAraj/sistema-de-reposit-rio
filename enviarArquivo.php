@@ -1,6 +1,6 @@
 <?php
 include 'novoconexao.php';
-
+// Deletar o arquivo e a pasta física
 if(isset($_GET['deletar'])) {
 
             $id = intval($_GET['deletar']);
@@ -14,23 +14,38 @@ if(isset($_GET['deletar'])) {
            }      
         }
 
-        if (isset($_GET['deletar_repositorio'])) {
+       if (isset($_GET['deletar_repositorio'])) {
     $id = intval($_GET['deletar_repositorio']);
 
-    // Primeiro pega o path do arquivo para excluir, se necessário
-    $sql_select = $conn->query("SELECT * FROM repositorio WHERE Id_user='$id'") or die($conn->error);
-    $repo = $sql_select->fetch_assoc();
+    // Primeiro pega o path do arquivo para excluir fisicamente
+    $sql_select = $conn->query("SELECT path FROM repositorio WHERE Id_user='$id'") or die($conn->error);
+    if ($repo = $sql_select->fetch_assoc()) {
+        $caminhoArquivo = $repo['path'];
 
-    // Remove o registro do banco
-    $deletar_sql = $conn->query("DELETE FROM repositorio WHERE Id_user='$id'") or die($conn->error);
+        // Deleta o arquivo físico, se existir
+        if (file_exists($caminhoArquivo)) {
+            unlink($caminhoArquivo);
+        }
 
-    if ($deletar_sql) {
-        $messagemExitRep = "Registro do repositório excluído com sucesso!";
+        // Agora remove o registro da tabela repositorio
+        $deletar_sql = $conn->query("DELETE FROM repositorio WHERE Id_user='$id'") or die($conn->error);
+        
+        // Agora remove o registro da tabela arquivos
+        $deletar_arquivo = $conn->query("DELETE FROM arquivos WHERE path='$caminhoArquivo'");
+
+        if ($deletar_sql) {
+            $messagemExitRep = "Registro do repositório excluído com sucesso!";
+        } else {
+            $messagemExitRep = "Erro ao excluir registro do repositório!";
+        }
+    } else {
+        $messagemExitRep = "Arquivo não encontrado no banco de dados.";
     }
 }
 
 
 
+//Deletar o usuario no banco de dados de Usuários
   if (isset($_GET['deletar_usuario'])) {
     $id = intval($_GET['deletar_usuario']);
     
@@ -65,7 +80,7 @@ if(isset($_GET['deletar'])) {
 
            if ($deu_certo) {
                 $conn->query("INSERT INTO arquivos (nome, path) VALUES('$nomeDoArquivo', '$path')") or die($conn->error);
-                $envio = "<p> <a target=\"_blank\" href=\"arquivos/$novoNomeDoArquivo.$extansao\"> clique aqui para acessá-lo.</a>  </p>";
+                $envioc = "<p> <a target=\"_blank\" href=\"arquivos/$novoNomeDoArquivo.$extansao\"> clique aqui para acessá-lo.</a>  </p>";
                 
            }
                 else
@@ -76,18 +91,19 @@ if(isset($_GET['deletar'])) {
     $sql_query = $conn->query("SELECT * FROM arquivos") or die($conn->error);
     ?>
 <!------------------------------------------------------------------------------------------------------------------->
-<?php
+<?php //Deletar o repositório do banco de dados 
 $sql = "SELECT * FROM repositorio"; 
 $cadastro = $conn->query($sql);
 
 // Verificar se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Obter os dados do formulário
+    $data = (int) $_POST['data'];
     $autoria = mysqli_real_escape_string($conn, $_POST['nome']);
     $nome_orientador = mysqli_real_escape_string($conn, $_POST['orientador']);
     $tituloArtigo = mysqli_real_escape_string($conn, $_POST['titulo']);
     $palavras_chave = mysqli_real_escape_string($conn, $_POST['palavras_chaves']);
-    $data = mysqli_real_escape_string($conn, $_POST['data']);
+    
     $temaCentral = mysqli_real_escape_string($conn, $_POST['tema_central']);
     $tipoDeProducao = mysqli_real_escape_string($conn, $_POST['tipo_producao']);
     $resumo = mysqli_real_escape_string($conn, $_POST['resumo']);
@@ -95,8 +111,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Verifica se já existe um artigo com o mesmo título e o mesmo arquivo
     $verifica = $conn->query("SELECT * FROM repositorio WHERE Autoria = '$autoria' AND path = '$path'");
     
+     $verifica = $conn->query("SELECT * FROM repositorio WHERE titulo_artigo = '$tituloArtigo'");
+    
     if ($verifica->num_rows > 0) {
-        $envio = "Este artigo já está cadastrado no sistema.";
+        $messagemExitRep = "Este artigo já está cadastrado no sistema.";
     } else {
         // Inserir novo artigo
         $sql = "INSERT INTO repositorio 
@@ -114,9 +132,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 
-<?php
-//include('restrita.php');
-?>
 <!------------------------------------------------------------------------------------------------------------------->
 <!----SISTEMA DE BUSCA--->
 

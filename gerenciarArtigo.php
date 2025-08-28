@@ -64,6 +64,9 @@ $totalArtigo = $resultTotal->fetch_assoc()['total'];
   background-color: #0853c4;
 }
 
+.btn-novo{
+    margin-right: 50px;
+}
 
    /* Evitar sobreposição com a sidebar fixa */
     @media (min-width: 768px) {
@@ -82,6 +85,14 @@ $totalArtigo = $resultTotal->fetch_assoc()['total'];
       }
     }
   }
+  
+  
+  .alert{
+        position: absolute; /* ou relative, fixed, sticky dependendo do caso */
+  z-index: 10;  
+  margin-left: 2%;
+  opacity: 0.9;    
+    }
 </style>
 
 <body>
@@ -95,9 +106,10 @@ $totalArtigo = $resultTotal->fetch_assoc()['total'];
         <?php echo $envio; ?>
       </div>
       <?php elseif (!empty($messagemExitRep)) : ?>
-  <div class="alert alert-info fade-message" id="mensagem-temporaria">
+  <div class="alert alert-danger fade-message" id="mensagem-temporaria">
     <?php echo $messagemExitRep; ?>
   </div>
+     
 
       
   <script>
@@ -106,7 +118,7 @@ $totalArtigo = $resultTotal->fetch_assoc()['total'];
       if (msg) {
         msg.style.transition = "opacity 0.5s ease-out";
         msg.style.opacity = 0;
-        setTimeout(() => msg.remove(), 1000); // remove o elemento após o fade
+        setTimeout(() => msg.remove(), 1000); // remove o elemento após a messagem
       }
     }, 3000); // 5 segundos
   </script>
@@ -118,7 +130,7 @@ $totalArtigo = $resultTotal->fetch_assoc()['total'];
 
 <!-- Modal de Cadastro de Artigo -->
 <div class="modal fade" id="modalCadastroArtigo" tabindex="-1" aria-labelledby="modalCadastroArtigoLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered">
+  <div class="modal-dialog modal-xl modal-dialog">
     <div class="modal-content">
       <form class="form-container" action="" method="POST" enctype="multipart/form-data">
         
@@ -137,10 +149,21 @@ $totalArtigo = $resultTotal->fetch_assoc()['total'];
               <label>Orientador</label>
               <input type="text" name="orientador" class="form-control" placeholder="Nome do orientador" required />
             </div>
-            <div class="col-md-6 mb-3">
-              <label>Data de Publicação</label>
-              <input type="date" name="data" class="form-control" required />
-            </div>
+             <div class="col-md-6 mb-3">
+    <label>Ano de Publicação</label>
+    <input type="number" name="data" class="form-control" min="1900" max="2099" step="1" required>
+</div>
+<script>
+document.getElementById("ano").addEventListener("input", function () {
+    let valor = parseInt(this.value);
+
+    if (valor < 1900) {
+        this.value = 1900;
+    } else if (valor > 2099) {
+        this.value = 2099;
+    }
+});
+</script>
             <div class="col-md-6 mb-3">
               <label>Título do Artigo</label>
               <input type="text" name="titulo" class="form-control" placeholder="Ex: A importância da leitura..." required />
@@ -236,7 +259,7 @@ $totalArtigo = $resultTotal->fetch_assoc()['total'];
     </div>
 
     <div class="col-md-4">
-      <input  type="date" name="data_inicio" class="form-control" value="<?= $_GET['data_inicio'] ?? '' ?>">
+      <input  type="number" name="data_inicio" class="form-control" placeholder="Ano de Produção" value="<?= $_GET['data_inicio'] ?? '' ?>">
     </div>
 
     <div class="col-md-4">
@@ -304,7 +327,7 @@ while ($repo = $repositorios->fetch_assoc()) {
       <?php echo htmlspecialchars($repo['titulo_artigo']); ?>
     </td>
     <td><?php echo htmlspecialchars($repo['palavras_chaves']); ?></td>
-    <td><?php echo date("d/m/y", strtotime($repo['data_Publicação'])); ?></td>
+    <td><?php echo ( $repo['data_Publicação']); ?></td>
     <td><?php echo htmlspecialchars($repo['tema_central']); ?></td>
     <td>
       <span class="badge bg-secondary">
@@ -337,5 +360,4 @@ while ($repo = $repositorios->fetch_assoc()) {
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 

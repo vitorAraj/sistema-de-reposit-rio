@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="icon" type="image/png" href="img\guia.png">
 
 <style>
 
@@ -41,8 +42,8 @@ align-items: center;
 <header id="topo" class="border-bottom sticky-top">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="Home.php">
-      <img src="img\logoRui.png" alt="Logo" class="logo-img me-2">
+    <a class="navbar-brand d-flex align-items-center" href="index.php">
+      <img src="img\logoBar.png" alt="Logo" class="logo-img me-2">
       Artigos
     </a>
 
@@ -60,7 +61,7 @@ align-items: center;
         <input name="busca" class="form-control me-2" type="search" placeholder="Pesquise aqui"
           name="busca" value="<?php if(isset($_GET['busca'])) echo $_GET['busca']; ?>" >
         <button class="btn-outline" type="submit"><i class="bi bi-search"></i></button>
-         <a class="btn-outline" href="/sistema/login.php"><i class="bi bi-box-arrow-in-left"></i> Login</a>
+         <a class="btn-outline" href="login.php"><i class="bi bi-box-arrow-in-left"></i>Login</a>
       </form>
 
      

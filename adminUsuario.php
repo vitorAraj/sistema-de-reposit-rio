@@ -67,7 +67,7 @@ include('includes/navAdmin.php');
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
     <div class="col">
       <div class="card-box">
-        <a href="Home.php" style="text-decoration: none; color: inherit;">
+        <a href="index.php" style="text-decoration: none; color: inherit;">
           <i class="bi bi-house-door"></i>
           <h5>Home</h5>
           <p>Voltar à página inicial do site.</p>
@@ -87,7 +87,7 @@ include('includes/navAdmin.php');
 
     <div class="col">
       <div class="card-box">
-        <a href="RepositorioUser.php" style="text-decoration: none; color: inherit;">
+        <a href="repositorioUser.php" style="text-decoration: none; color: inherit;">
           <i class="bi bi-upload"></i>
           <h5>Cadastrar Artigos</h5>
           <p>Envie novos artigos para o repositório.</p>
@@ -105,4 +105,4 @@ include('includes/navAdmin.php');
       </div>
     </div>
   </div>
-</div>
+</div> 

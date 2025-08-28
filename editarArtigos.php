@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Editar Artigo</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="img\guia.png">
   <style>
     .form-bo {
       min-height: 100vh;
@@ -129,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="col-md-6 mb-3">
           <label>Data de Publicação</label>
-          <input type="date" name="data" class="form-control" value="<?php echo $artigo['data_Publicação']; ?>" required />
+          <input type="number" name="data" class="form-control" value="<?php echo $artigo['data_Publicação']; ?>" required />
         </div>
         <div class="col-md-6 mb-3">
           <label>Título do Artigo</label>

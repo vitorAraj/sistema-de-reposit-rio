@@ -1,6 +1,6 @@
 <?php
-include('includes\navAdminTotal.php');
-include 'novoconexao.php';
+include('includes/navAdminTotal.php');
+include ('novoconexao.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email'], $_POST['senha'], $_POST['nome'], $_POST['tipo'])) {
     $nome = $conn->real_escape_string($_POST['nome']);

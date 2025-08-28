@@ -91,6 +91,17 @@ $cadastro = $conn->query($sql);
       margin-bottom: 15px;
     }
     .alert-info { padding: 10px; }
+    
+    .btn-novo{
+        margin-right: 50px;
+    }
+    
+    .alert{
+        position: absolute; /* ou relative, fixed, sticky dependendo do caso */
+  z-index: 10;  
+  margin-left: 2%;
+  opacity: 0.9;    
+    }
   </style>
 </head>
 <body>
@@ -134,7 +145,7 @@ $cadastro = $conn->query($sql);
 
   <!-- Modal de Cadastro -->
   <div class="modal fade" id="modalCadastroUsuario" tabindex="-1" aria-labelledby="modalCadastroUsuarioLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md modal-dialog-centered">
+    <div class="modal-dialog modal-md modal-dialog">
       <div class="modal-content">
         <form method="POST" action="" class="p-3">
           <div class="modal-header">
@@ -149,11 +160,7 @@ $cadastro = $conn->query($sql);
               <small class="text-muted">Preencha os campos abaixo para criar sua conta.</small>
             </div>
 
-            <?php if (!empty($mensagem)) : ?>
-              <div class="alert alert-success mt-3"><?php echo htmlspecialchars($mensagem); ?></div>
-            <?php elseif (!empty($mensagemErro)) : ?>
-              <div class="alert alert-danger mt-3"><?php echo htmlspecialchars($mensagemErro); ?></div>
-            <?php endif; ?>
+         
 
             <div class="form-floating mb-2">
               <input type="text" class="form-control" id="nome" name="nome" required placeholder="Seu Nome">

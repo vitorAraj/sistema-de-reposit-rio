@@ -1,7 +1,9 @@
 <?php
-include('novoconexao.php');
+include('includes/nav.php');
 include('enviarArquivo.php');
-include('includes\nav.php');
+include('novoconexao.php');
+
+
 
 ?>
 
@@ -79,6 +81,12 @@ $total_resultados = $sql_query->num_rows;
       background-color: #fff;
     
     }
+    
+    .Autoria{
+        font-size: 13px;
+    }
+    
+    
     .btn-outline-secondary:hover{
       color: #fff;
     }
@@ -127,6 +135,9 @@ $total_resultados = $sql_query->num_rows;
       <div class="list-group-item"> 
         <span class="update-icon bg-primary"><i class="bi bi-window-dock"></i> </span>
         <strong> <h5><?php echo $dados['titulo_artigo'];?></h3></strong>
+       
+       <h6 class="Autoria"><?php echo $dados['Autoria']; ?></h6> 
+      
        
         <div class="dados">
        <h6><?php echo $dados['tipoDeProdução']; ?></h6> 

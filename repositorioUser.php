@@ -1,4 +1,4 @@
 <?php
-include('includes\navAdmin.php');
-include('includes\repositorio.php');
+include('includes/navAdmin.php');
+include('includes/repositorio.php');
 ?>

@@ -38,7 +38,7 @@ if (!isset($_SESSION['id_login'])) {
                 <p class='lead'>
                     Desculpe, usuário, mas você não tem permissão para acessar esse recurso.
                 </p>
-                <a class='btn btn-primary' href='Home.php'>Voltar para a página inicial</a>
+                <a class='btn btn-primary' href='index.php'>Voltar para a página inicial</a>
             </div>
         </div>
     </body>

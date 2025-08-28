@@ -81,9 +81,20 @@ include('enviarArquivo.php');
         <input type="text" name="orientador" class="form-control" placeholder="Nome do orientador" required />
       </div>
       <div class="col-md-6 mb-3">
-        <label>Data de Publicação</label>
-        <input type="date" name="data" class="form-control" required />
-      </div>
+    <label>Ano de Publicação</label>
+    <input type="number" name="data" class="form-control" placeholder="Ex: 2000"  min="1900" max="2099" step="1" required>
+</div>
+<script>
+document.getElementById("ano").addEventListener("input", function () {
+    let valor = parseInt(this.value);
+
+    if (valor < 1900) {
+        this.value = 1900;
+    } else if (valor > 2099) {
+        this.value = 2099;
+    }
+});
+</script>
       <div class="col-md-6 mb-3">
         <label>Título do Artigo</label>
         <input type="text" name="titulo" class="form-control" placeholder="Ex: A importância da leitura..." required />

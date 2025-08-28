@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if ($conn->query($update)) {
-        header("Location: gerenciaruser.php?editado=1");
+        header("Location: gerenciarUser.php?editado=1");
         exit;
     } else {
         $erro = "Erro ao atualizar: " . $conn->error;
@@ -46,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <title>Editar Usuário</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img\guia.png">
   <style>
     body {
       background-color: #f0f2f5;

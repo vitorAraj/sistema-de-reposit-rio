@@ -190,7 +190,7 @@ $tamanhoPDFsFormatado = number_format($tamanhoPDFsGB, 2); // 2 casas decimais
       </div>
 
       <div class="col">
-        <a href="Home.php">
+        <a href="index.php">
           <div class="text-center">
             <i class="bi bi-house-door fs-2"></i>
             <h5>Home</h5>
@@ -203,7 +203,7 @@ $tamanhoPDFsFormatado = number_format($tamanhoPDFsGB, 2); // 2 casas decimais
         <a href="gerenciarArtigo.php">
           <div class="text-center">
             <i class="bi bi-database fs-2"></i>
-            <h5>Banco de Dados</h5>
+            <h5>Gerenciar Artigo</h5>
             <p>Gerencie repositório e tabela.</p>
           </div>
         </a>
@@ -219,16 +219,7 @@ $tamanhoPDFsFormatado = number_format($tamanhoPDFsGB, 2); // 2 casas decimais
         </a>
       </div>
 
-      <div class="col">
-        <a href="BancoDados.php">
-          <div class="text-center">
-            <i class="bi bi-pin fs-2"></i>
-            <h5>Destaques</h5>
-            <p>Funcionalidades em destaque.</p>
-          </div>
-        </a>
-      </div>
-
+     
       <div class="col">
         <a  href="logout.php">
           <div class="text-center">

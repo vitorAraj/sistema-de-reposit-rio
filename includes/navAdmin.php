@@ -9,6 +9,7 @@ include('restrita.php');
   <title>Gerenciar</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="icon" type="image/png" href="img\guia.png">
   <style>
     body {
       font-size: .875rem;
@@ -123,7 +124,7 @@ include('restrita.php');
 
   <div id="sidebar" class="sidebar d-md-block">
     <div>
-      <strong> <h4 class="sidebar-heading"><img src="img\logoRui.png" alt="Logo" class="logo-img me-2">Perfil</h4></strong>
+      <strong> <h4 class="sidebar-heading"><img src="img\guia.png" alt="Logo" class="logo-img me-2">Perfil</h4></strong>
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li>

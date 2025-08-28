@@ -20,6 +20,7 @@ if (!isset($_SESSION['id_login']) || $_SESSION['tipo'] !== 'admin') {
   <title>Administração</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="icon" type="image/png" href="img\guia.png">
   <style>
     body {
       font-size: .875rem;
@@ -134,6 +135,11 @@ if (!isset($_SESSION['id_login']) || $_SESSION['tipo'] !== 'admin') {
   width: auto;
 }
 
+.toggle-btn{
+    margin-top: 20px;
+}
+
+
 .bi{
     font-size: 18px;
 }
@@ -147,7 +153,7 @@ if (!isset($_SESSION['id_login']) || $_SESSION['tipo'] !== 'admin') {
 
   <div id="sidebar" class="sidebar d-md-block">
     <div>
-      <strong> <h4 class="sidebar-heading"><img src="img\logoRui.png" alt="Logo" class="logo-img me-2">Admin</h4></strong>
+      <strong> <h4 class="sidebar-heading"><img src="img\guia.png" alt="Logo" class="logo-img me-2">Admin</h4></strong>
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li>
@@ -161,6 +167,9 @@ if (!isset($_SESSION['id_login']) || $_SESSION['tipo'] !== 'admin') {
         </li>
           <li>
           <a href="gerenciarUser.php" class="nav-link"><i class="bi bi-people"></i>Gerenciar Usuários</a>
+        </li>
+        <li>
+          <a href="repositorioAdmin.php" class="nav-link"><i class="bi bi-journal-arrow-down"></i>Cadastrar Artigos</a>
         </li>
         <li>
           <a href="gerenciarArtigo.php" class="nav-link"><i class="bi bi-book"></i>Gerenciar Artigos</a>
